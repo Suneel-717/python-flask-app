@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code') {
+            steps {
+                echo 'Cloning repository...'
+                git 'https://github.com/Suneel-717/python-flask-app.git'
+            }
+        }
+        stage('Install') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh 'pytest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+                sh './deploy.sh'
+            }
+        }
+    }
+}
