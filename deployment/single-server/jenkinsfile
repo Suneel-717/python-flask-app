@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh './deploy.sh'
+                sh './deploy.sh's
             }
         }
     }
